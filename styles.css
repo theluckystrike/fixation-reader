@@ -1,0 +1,11 @@
+/* The variables come from the saved Pro style. Free marks use the defaults. */
+.markdown-preview-view b.fx,
+.markdown-source-view .fx {
+  font-weight: var(--fx-weight, 700);
+  color: var(--fx-color, inherit);
+}
+
+.markdown-preview-view .fx-end,
+.markdown-source-view .fx-end {
+  opacity: var(--fx-ending-opacity, 1);
+}
