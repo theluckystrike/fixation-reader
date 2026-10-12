@@ -14,6 +14,7 @@ export default class FixationReaderPlugin extends Plugin {
 	private tab: FixationReaderSettingTab | null = null;
 	private extensions: Extension[] = [];
 	private active = new Map<string, boolean>();
+	private unloaded = false;
 
 	async onload(): Promise<void> {
 		await this.loadSettings();
@@ -49,7 +50,7 @@ export default class FixationReaderPlugin extends Plugin {
 		this.refreshViews(path);
 	}
 	process(el: HTMLElement, ctx: MarkdownPostProcessorContext): void {
-		processSection(el, this.settings, this.activeFor(ctx.sourcePath, ctx.frontmatter as unknown), isPro());
+		processSection(el, this.settings, !this.unloaded && this.activeFor(ctx.sourcePath, ctx.frontmatter as unknown), isPro());
 		if (!el.isConnected && el.querySelector('[data-fixation-reader]')) this.recheck(el, 10);
 	}
 	/** Live Preview renders callouts and tables before it attaches them. Check the place again after the attach. */
@@ -79,10 +80,14 @@ export default class FixationReaderPlugin extends Plugin {
 			if (leaf.view instanceof MarkdownView && (!path || leaf.view.file?.path === path)) leaf.view.previewMode.rerender(true);
 		});
 	}
+	/** Reading view keeps off-screen sections out of the DOM. Render each note again so those sections also lose their marks. */
 	onunload(): void {
+		this.unloaded = true;
 		resetPro();
 		this.app.workspace.iterateAllLeaves((leaf) => {
-			if (leaf.view instanceof MarkdownView) clearSection(leaf.view.previewMode.containerEl);
+			if (!(leaf.view instanceof MarkdownView)) return;
+			clearSection(leaf.view.previewMode.containerEl);
+			leaf.view.previewMode.rerender(true);
 		});
 	}
 }
