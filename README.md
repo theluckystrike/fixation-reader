@@ -58,13 +58,15 @@ Ending opacity can range from 0.3 to 1. Lower values dim the rest of a marked wo
 
 ## Install
 
-This build is prepared for review. A community directory listing is not asserted here. When release files are available, copy `main.js`, `manifest.json`, and `styles.css` into `<vault>/.obsidian/plugins/fixation-reader/`. Enable community plugins, then enable Fixation Reader. Obsidian 1.13.4 or later is required.
+Open Settings, Community plugins, Browse, search for Fixation Reader, then install and enable it. For a manual installation, copy `main.js`, `manifest.json`, and `styles.css` into `<vault>/.obsidian/plugins/fixation-reader/`. Enable community plugins, then enable Fixation Reader. Obsidian 1.13.4 or later is required.
 
 ## Usage
 
 Open a Markdown note and select Reading view. The effect starts enabled. Read a paragraph, use the toggle command, and compare. Open the plugin tab in Settings to change strength or minimum length. A note with existing code or math is useful for checking which text stays unchanged.
 
 ## Settings
+
+After a minor or major update, this plugin opens one What's new tab in the background. The tab and settings card suggest other NoteMods plugins and Zovo Chat and link to notemods.com for feedback ([privacy](https://notemods.com/privacy/)). The tab sends no data. Turn the tab off in Settings.
 
 Settings are saved in the plugin's local data file. Changing a value refreshes open previews and reconfigures open editors. The defaults are strength 0.5, minimum length 3, and Live Preview off. The strength range is 0.2 to 0.7; the minimum range is 1 to 30. Pro values stay saved when Pro is off and are ignored until Pro is active.
 

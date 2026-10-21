@@ -7,6 +7,8 @@ import { DEFAULT_SETTINGS, FixationReaderSettingTab, normalizeSettings, type Fix
 import { clearSection, processSection } from './reading';
 import { enabledFor } from './rules';
 import { fixationExtension } from './editor';
+import { setupHello } from './hello/index';
+import WHATS_NEW from './whats-new.json';
 
 export default class FixationReaderPlugin extends Plugin {
 	settings: FixationReaderSettings = { ...DEFAULT_SETTINGS };
@@ -17,6 +19,8 @@ export default class FixationReaderPlugin extends Plugin {
 	private unloaded = false;
 
 	async onload(): Promise<void> {
+		// First: "What's new" reads its state before the settings load (packages/hello). It does not wait.
+		setupHello(this, WHATS_NEW);
 		await this.loadSettings();
 		const pro = createGitHubSponsors(this.app, this.manifest.id, SPONSORS, this);
 		pro.init();

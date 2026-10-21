@@ -2,6 +2,7 @@ import { PluginSettingTab, normalizePath, type SettingDefinitionItem } from 'obs
 import { sponsorsSettingItems } from './license/github-obsidian';
 import { PRO_UI, isPro } from './pro';
 import type FixationReaderPlugin from './main';
+import { helloSettingItems } from './hello/settings';
 
 export interface FixationReaderSettings {
 	enabled: boolean;
@@ -45,6 +46,11 @@ export class FixationReaderSettingTab extends PluginSettingTab {
 		this.plugin = plugin;
 	}
 	getSettingDefinitions(): SettingDefinitionItem[] {
+		// The product rows, then the "More from NoteMods" card (packages/hello).
+		return [...this.productSettingDefinitions(), ...helloSettingItems()];
+	}
+
+	productSettingDefinitions(): SettingDefinitionItem[] {
 		const locked = !isPro();
 		return [
 			{ name: 'Enable fixation', desc: 'Bold word starts in Reading view.', control: { type: 'toggle', key: 'enabled', defaultValue: true } },

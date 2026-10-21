@@ -1,6 +1,6 @@
 {
 	"name": "fixation-reader",
-	"version": "1.0.2",
+	"version": "1.1.0",
 	"private": true,
 	"description": "Bold the first letters of words in Reading view to guide the eye through long text.",
 	"main": "main.js",
