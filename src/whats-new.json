@@ -1,9 +1,10 @@
 {
 	"id": "fixation-reader",
 	"name": "Fixation Reader",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"changes": [
-		"Enable in Live Preview, the folder and tag rules and the custom style settings now show how to get Pro, with a Sponsor on GitHub button. Nothing is saved until Pro is on."
+		"When the settings refuse a Pro choice, for example in Enable in Live Preview, the keyboard focus now stays on that setting.",
+		"In a text field the focus leaves the field, as before."
 	],
 	"tip": "Add the boolean property fixation: false to keep one note plain.",
 	"thanks": "Hi, I am Michael, a solo developer in Poland. Fixation Reader is one of over 100 small plugins that I make. Thank you for reading your notes with it.",

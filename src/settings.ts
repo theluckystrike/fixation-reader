@@ -1,5 +1,5 @@
 import { PluginSettingTab, normalizePath, type Notice, type SettingDefinitionItem } from 'obsidian';
-import { sponsorsSettingItems } from './license/github-obsidian';
+import { sponsorsSettingItems, redrawKeepFocus } from './license/github-obsidian';
 import { PRO_LEADS, PRO_UI, isPro, proNotice } from './pro';
 import type FixationReaderPlugin from './main';
 import { helloSettingItems } from './hello/settings';
@@ -86,9 +86,7 @@ export class FixationReaderSettingTab extends PluginSettingTab {
 			if (lead && !this.notice?.messageEl.isConnected) this.notice = proNotice(lead);
 			// Obsidian does not draw a control again while it has the focus. Move the focus out, then draw the tab
 			// again, so the control shows the value in effect.
-			const active = this.containerEl.ownerDocument.activeElement as HTMLElement | null;
-			if (active && this.containerEl.contains(active)) active.blur();
-			this.update();
+			redrawKeepFocus(this);
 			return;
 		}
 		this.plugin.settings = normalizeSettings({ ...this.plugin.settings, [key]: value });
