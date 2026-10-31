@@ -6,6 +6,17 @@ The free version includes Reading view, the strength and minimum length controls
 
 <img src="https://raw.githubusercontent.com/theluckystrike/fixation-reader/HEAD/docs/fixation-reader.gif" alt="A sample reading session with word starts on, off, then on again" width="720">
 
+## Quick start
+
+1. Paste this paragraph into a note:
+
+```markdown
+Reading a long paragraph is easier when each word has a clear start.
+```
+
+2. Switch to Reading view. The first letters of each word with 3 or more letters show in bold. With the default strength, that is about half of the word.
+3. Run the command "Turn fixation on or off". The bold starts go away. Run it again to show them.
+
 ## Features
 
 ### Word starts in Reading view
@@ -84,7 +95,7 @@ A word split across separate DOM nodes can get separate starts. PDF and canvas t
 
 The core features are free. Pro features need a GitHub Sponsors sponsorship of theluckystrike: $5 a month or more, or $15 once. A total payment of $15 meets the payment requirement for Pro without further payment. Sign-in and the checks below still apply. Your notes stay readable and editable with or without Pro.
 
-GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike. You need no account for the free features. Pro needs the GitHub account that sponsors.
+GitHub handles the payment. Sponsor at https://github.com/sponsors/theluckystrike?frequency=one-time&metadata_source=fixation-reader. You need no account for the free features. Pro needs the GitHub account that sponsors.
 
 Until you select "Sign in with GitHub" in the settings, Fixation Reader makes no network requests. Sign in uses the GitHub device flow. Fixation Reader sends its public client ID and the scope `read:user` to `https://github.com/login/device/code` and shows you a code. While you enter the code at https://github.com/login/device, it asks `https://github.com/login/oauth/access_token` every few seconds to check the sign-in status. The scope permits profile reads only. GitHub needs this access to show the sponsorship tier. It grants no repository scope and no write access.
 
